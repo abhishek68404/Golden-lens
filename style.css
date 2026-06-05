@@ -1,0 +1,87 @@
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+font-family:'Poppins',sans-serif;
+background:#050505;
+color:#fff;
+overflow-x:hidden;
+}
+body::before{
+content:'';
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 20% 20%,rgba(255,215,0,.15),transparent 25%),
+radial-gradient(circle at 80% 60%,rgba(255,170,0,.12),transparent 25%);
+z-index:-2;
+animation:bgmove 10s ease-in-out infinite alternate;
+}
+@keyframes bgmove{
+from{transform:translate(-30px,-20px)}
+to{transform:translate(30px,20px)}
+}
+
+.glass{
+background:rgba(255,255,255,.06);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,.1);
+border-radius:24px;
+}
+
+.logo-img{
+animation:float 4s ease-in-out infinite;
+transition:.5s;
+filter:drop-shadow(0 0 25px rgba(255,215,0,.6));
+}
+.logo-img:hover{
+transform:scale(1.08) rotateY(15deg);
+}
+@keyframes float{
+50%{transform:translateY(-15px)}
+}
+
+h1,h2{
+background:linear-gradient(90deg,#FFD700,#FFF0A0,#FFD700);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.video,.card{
+transition:.4s;
+transform-style:preserve-3d;
+}
+.video:hover,.card:hover{
+transform:perspective(1000px) rotateX(6deg) rotateY(-6deg) translateY(-10px);
+box-shadow:0 20px 60px rgba(255,215,0,.2);
+}
+
+button,.btn{
+background:linear-gradient(90deg,#FFD700,#FFB300);
+border:none;
+border-radius:40px;
+padding:14px 28px;
+font-weight:700;
+cursor:pointer;
+transition:.3s;
+}
+button:hover,.btn:hover{
+transform:translateY(-5px);
+}
+
+.reveal{
+opacity:0;
+transform:translateY(50px);
+transition:1s;
+}
+.reveal.show{
+opacity:1;
+transform:none;
+}
+
+#particles{
+position:fixed;
+inset:0;
+z-index:-1;
+pointer-events:none;
+}
