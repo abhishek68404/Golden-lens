@@ -65,3 +65,13 @@ document.addEventListener("mousemove", e => {
 
     logo.style.transform = `translate(${x}px, ${y}px)`;
 });
+const cameraCursor = document.createElement("div");
+cameraCursor.className = "camera-cursor";
+cameraCursor.innerHTML = "📷";
+
+document.body.appendChild(cameraCursor);
+
+document.addEventListener("mousemove", (e) => {
+    cameraCursor.style.left = e.clientX + "px";
+    cameraCursor.style.top = e.clientY + "px";
+});
