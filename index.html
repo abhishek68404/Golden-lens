@@ -2,153 +2,178 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Golden Lens | Cinematography</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>Golden Lens Cinema</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box}
+*{margin:0;padding:0;box-sizing:border-box}
 body{
-    margin:0;
-    font-family: Arial, sans-serif;
-    background: radial-gradient(circle at top, #111827, #000);
-    color:#f9fafb;
+font-family:Poppins,sans-serif;
+background:#050505;
+color:#fff;
+overflow-x:hidden;
 }
-.container{
-    max-width:1100px;
-    margin:auto;
-    padding:20px;
+#particles{position:fixed;inset:0;z-index:-2}
+.bg{
+position:fixed;inset:0;z-index:-3;
+background:
+radial-gradient(circle at 20% 20%,rgba(255,215,0,.15),transparent 25%),
+radial-gradient(circle at 80% 40%,rgba(255,180,0,.12),transparent 25%),
+linear-gradient(#0a0a0a,#000);
+animation:move 10s ease-in-out infinite alternate;
 }
-
-/* HERO */
+@keyframes move{
+from{transform:translate(-30px,-20px)}
+to{transform:translate(30px,20px)}
+}
 .hero{
-    min-height:85vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
 }
-
-/* LOGO */
-.logo-img{
-    width:160px;
-    height:160px;
-    border-radius:50%;
-    object-fit:cover;
-    box-shadow:0 0 40px rgba(250,204,21,0.6);
-    margin-bottom:20px;
+.logo{
+width:180px;height:180px;border-radius:50%;
+object-fit:cover;
+border:3px solid rgba(255,215,0,.4);
+box-shadow:0 0 40px rgba(255,215,0,.4),0 20px 60px rgba(0,0,0,.8);
+animation:float 4s ease-in-out infinite;
+transition:.5s;
 }
-
-/* TEXT */
+.logo:hover{transform:rotateY(20deg) scale(1.08)}
+@keyframes float{50%{transform:translateY(-15px)}}
 h1{
-    font-size:38px;
-    margin:10px 0;
-    letter-spacing:2px;
+font-size:clamp(3rem,8vw,5rem);
+background:linear-gradient(90deg,#ffd700,#fff3b0,#ffd700);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
-.tagline{
-    color:#9ca3af;
-    letter-spacing:2px;
-    margin-bottom:30px;
+.tag{color:#ccc;letter-spacing:4px;margin:15px 0 30px}
+.btns a{
+display:inline-block;
+margin:10px;
+padding:14px 28px;
+border-radius:50px;
+text-decoration:none;
+font-weight:700;color:#fff;
+backdrop-filter:blur(10px);
+transition:.3s;
 }
-
-/* BUTTONS */
-.buttons a{
-    display:inline-block;
-    margin:10px;
-    padding:14px 30px;
-    border-radius:40px;
-    text-decoration:none;
-    font-weight:bold;
-    transition:0.3s;
+.btns a:hover{transform:translateY(-5px)}
+.insta{background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af)}
+.wa{background:#25d366;color:#000}
+.section{max-width:1200px;margin:auto;padding:80px 20px}
+.glass{
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(14px);
+border:1px solid rgba(255,255,255,.08);
+border-radius:24px;
+padding:30px;
+box-shadow:0 20px 50px rgba(0,0,0,.4);
 }
-.instagram{
-    background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af);
-    color:white;
+h2{text-align:center;color:#ffd700;margin-bottom:30px;font-size:2.2rem}
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
 }
-.whatsapp{
-    background:#22c55e;
-    color:black;
+.card{
+padding:30px;
+min-height:220px;
+cursor:pointer;
+transition:.4s;
 }
-.buttons a:hover{
-    transform:scale(1.08);
+.card:hover{
+transform:perspective(1000px) rotateX(6deg) rotateY(-6deg) translateY(-8px);
+box-shadow:0 0 30px rgba(255,215,0,.25);
 }
-
-/* WORK SECTION */
-.section{
-    margin-top:60px;
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:20px;
+text-align:center;
 }
-.section h2{
-    text-align:center;
-    letter-spacing:3px;
-    margin-bottom:30px;
-}
-.videos{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:22px;
-}
-.video{
-    border-radius:20px;
-    overflow:hidden;
-    box-shadow:0 20px 50px rgba(0,0,0,0.8);
-}
-.video iframe{
-    width:100%;
-    height:520px;
-}
-
-/* FOOTER */
-.footer{
-    text-align:center;
-    margin:60px 0 20px;
-    color:#9ca3af;
-    font-size:14px;
-}
+.num{font-size:2rem;color:#ffd700;font-weight:800}
+footer{text-align:center;padding:40px;color:#aaa}
+.reveal{opacity:0;transform:translateY(40px);transition:1s}
+.reveal.show{opacity:1;transform:none}
 </style>
 </head>
-
 <body>
+<div class="bg"></div>
+<canvas id="particles"></canvas>
 
-<div class="container">
-
-    <div class="hero">
-        <!-- LOGO IMAGE -->
-        <img src="logo.jpg" class="logo-img">
-
-        <!-- NAME -->
-        <h1>Golden Lens Cinema</h1>
-
-        <!-- TAGLINE -->
-        <div class="tagline">CINEMATOGRAPHY • REELS • FILMS</div>
-
-        <!-- BUTTONS -->
-        <div class="buttons">
-            <a class="instagram" href="https://www.instagram.com/golden_lens__cinema">Instagram</a>
-            <a class="whatsapp" href="https://wa.me/919322445880">WhatsApp</a>
-        </div>
-    </div>
-
-    <!-- VIDEOS -->
-    <div class="section">
-        <h2>FEATURED WORK</h2>
-        <div class="videos">
-
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/Rpj3zdD24DU" frameborder="0" allowfullscreen></iframe>
-            </div>
-
-            <div class="video">
-                <iframe src="https://www.youtube.com/embed/JCPTaiD8zjA" frameborder="0" allowfullscreen></iframe>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="footer">
-        © 2026 Golden Lens Cinematography
-    </div>
-
+<section class="hero">
+<img src="logo.jpg" class="logo" alt="logo">
+<h1>Golden Lens Cinema</h1>
+<p class="tag">CINEMATOGRAPHY • REELS • FILMS</p>
+<div class="btns">
+<a class="insta" href="https://www.instagram.com/golden_lens__cinema" target="_blank">Instagram</a>
+<a class="wa" href="https://wa.me/919322445880" target="_blank">WhatsApp</a>
 </div>
+</section>
 
+<section class="section reveal">
+<div class="glass">
+<h2>About Us</h2>
+<p>We create cinematic stories, wedding films, creative reels, and commercial visuals with a luxury production style that captures unforgettable moments.</p>
+</div>
+</section>
+
+<section class="section reveal">
+<h2>Featured Work</h2>
+<div class="grid">
+<div class="glass card">🎬 Wedding Films</div>
+<div class="glass card">💍 Pre-Wedding Shoots</div>
+<div class="glass card">📱 Reels & Social Media</div>
+<div class="glass card">🏢 Commercial Projects</div>
+</div>
+</section>
+
+<section class="section reveal">
+<h2>Studio Statistics</h2>
+<div class="stats">
+<div class="glass"><div class="num">100+</div>Projects</div>
+<div class="glass"><div class="num">50+</div>Clients</div>
+<div class="glass"><div class="num">1000+</div>Creative Hours</div>
+<div class="glass"><div class="num">1M+</div>Views</div>
+</div>
+</section>
+
+<footer>© 2026 Golden Lens Cinema</footer>
+
+<script>
+const canvas=document.getElementById('particles');
+const ctx=canvas.getContext('2d');
+function resize(){canvas.width=innerWidth;canvas.height=innerHeight}
+resize();addEventListener('resize',resize);
+let p=[...Array(80)].map(()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*2+1,v:Math.random()*0.6+0.2}));
+function anim(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle='rgba(255,215,0,.7)';
+p.forEach(a=>{
+a.y-=a.v;if(a.y<0)a.y=innerHeight;
+ctx.beginPath();ctx.arc(a.x,a.y,a.r,0,6.28);ctx.fill();
+});
+requestAnimationFrame(anim);
+}
+anim();
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting)e.target.classList.add('show');
+});
+});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+document.addEventListener('mousemove',e=>{
+const x=(e.clientX/window.innerWidth-0.5)*20;
+const y=(e.clientY/window.innerHeight-0.5)*20;
+document.querySelector('.logo').style.transform=`translate(${x}px,${y}px)`;
+});
+</script>
 </body>
 </html>
